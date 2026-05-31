@@ -40,21 +40,20 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,250,248,
 h1{font-family:var(--serif);font-size:clamp(2.8rem,6vw,5rem);line-height:1.08;letter-spacing:-0.03em;max-width:800px;animation:fadeUp .6s .1s ease both;opacity:0}
 h1 em{font-style:italic;color:var(--green-mid)}
 .hero-sub{font-size:1.1rem;color:var(--gray);max-width:520px;margin:1.5rem auto 2.5rem;line-height:1.7;animation:fadeUp .6s .2s ease both;opacity:0}
-.hero-form{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;animation:fadeUp .6s .3s ease both;opacity:0}
-.hero-form input{font-family:var(--sans);font-size:14px;padding:12px 18px;border:1.5px solid var(--border);border-radius:8px;background:var(--white);color:var(--black);width:260px;outline:none;transition:border-color .2s}
-.hero-form input:focus{border-color:var(--green-mid)}
-.hero-form input::placeholder{color:#aaa}
+
+/* FORM WRAPPER — błąd pod całym wierszem, nie między elementami */
+.form-wrap{display:flex;flex-direction:column;align-items:center;gap:0;animation:fadeUp .6s .3s ease both;opacity:0}
+.form-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.form-error{font-size:12px;color:#c0392b;font-family:var(--mono);margin-top:8px;min-height:18px;text-align:center}
+
+.form-wrap input{font-family:var(--sans);font-size:14px;padding:12px 18px;border:1.5px solid var(--border);border-radius:8px;background:var(--white);color:var(--black);width:260px;outline:none;transition:border-color .2s}
+.form-wrap input:focus{border-color:var(--green-mid)}
+.form-wrap input::placeholder{color:#aaa}
+.form-wrap input.input-error{border-color:#c0392b}
 .btn-primary{background:var(--black);color:var(--white);font-family:var(--sans);font-size:14px;font-weight:500;padding:12px 24px;border-radius:8px;border:none;cursor:pointer;transition:background .2s,transform .1s}
 .btn-primary:hover{background:#1a1a1a}
 .btn-primary:active{transform:scale(0.98)}
 .hero-note{font-size:12px;color:#aaa;margin-top:1rem;font-family:var(--mono);animation:fadeUp .6s .4s ease both;opacity:0}
-
-/* SOCIAL PROOF TICKER */
-.ticker{overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:12px 0;background:var(--gray-light);margin-top:3rem}
-.ticker-track{display:flex;gap:3rem;width:max-content;animation:scroll 28s linear infinite}
-.ticker-item{font-size:13px;color:var(--gray);font-family:var(--mono);white-space:nowrap}
-.ticker-item strong{color:var(--black)}
-@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* PROBLEM */
 .section{padding:5rem 2rem;max-width:1100px;margin:0 auto}
@@ -101,7 +100,7 @@ h1 em{font-style:italic;color:var(--green-mid)}
 .pricing-section{padding:5rem 2rem;max-width:800px;margin:0 auto;text-align:center}
 .pricing-section .section-tag{display:block;margin-bottom:1rem}
 .price-card{background:var(--white);border:1.5px solid var(--black);border-radius:16px;padding:3rem;margin-top:2.5rem;position:relative;overflow:hidden}
-.price-card::after{content:'NAJPOPULARNIEJSZY';position:absolute;top:20px;right:-30px;background:var(--black);color:var(--white);font-size:10px;font-family:var(--mono);padding:4px 40px;transform:rotate(45deg)}
+.price-card::after{content:'TYLKO WOOCOMMERCE';position:absolute;top:20px;right:-42px;background:var(--black);color:var(--white);font-size:10px;font-family:var(--mono);padding:4px 52px;transform:rotate(45deg)}
 .price-amount{font-family:var(--serif);font-size:64px;letter-spacing:-0.04em;line-height:1}
 .price-amount sup{font-size:24px;vertical-align:top;margin-top:12px;display:inline-block}
 .price-period{font-size:14px;color:var(--gray);font-family:var(--mono);margin-top:.5rem}
@@ -124,24 +123,27 @@ h1 em{font-style:italic;color:var(--green-mid)}
 .cta-bottom{background:var(--black);color:var(--white);text-align:center;padding:6rem 2rem}
 .cta-bottom h2{font-family:var(--serif);font-size:clamp(2rem,5vw,3.5rem);letter-spacing:-0.03em;margin-bottom:1rem}
 .cta-bottom p{color:#888;margin-bottom:2.5rem;font-size:15px}
-.cta-form{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-.cta-form input{font-family:var(--sans);font-size:14px;padding:13px 20px;border:1px solid #333;border-radius:8px;background:transparent;color:var(--white);width:280px;outline:none}
-.cta-form input::placeholder{color:#555}
-.cta-form input:focus{border-color:var(--green-mid)}
+.cta-form-wrap{display:flex;flex-direction:column;align-items:center;gap:0}
+.cta-form-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.cta-form-error{font-size:12px;color:#ff6b6b;font-family:var(--mono);margin-top:8px;min-height:18px;text-align:center}
+.cta-form-wrap input{font-family:var(--sans);font-size:14px;padding:13px 20px;border:1px solid #333;border-radius:8px;background:transparent;color:var(--white);width:280px;outline:none;transition:border-color .2s}
+.cta-form-wrap input::placeholder{color:#555}
+.cta-form-wrap input:focus{border-color:var(--green-mid)}
+.cta-form-wrap input.input-error{border-color:#ff6b6b}
 .btn-white{background:var(--white);color:var(--black);font-family:var(--sans);font-size:14px;font-weight:500;padding:13px 26px;border-radius:8px;border:none;cursor:pointer;transition:opacity .2s}
 .btn-white:hover{opacity:.85}
+
+/* SUCCESS */
+.success-msg{display:none;background:var(--green-light);color:var(--green);font-size:14px;font-family:var(--mono);padding:12px 20px;border-radius:8px;border:1px solid rgba(26,122,74,.2);margin-top:1rem}
 
 /* FOOTER */
 footer{text-align:center;padding:2rem;font-size:12px;color:#aaa;font-family:var(--mono);border-top:1px solid var(--border)}
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 
-/* SUCCESS STATE */
-.success-msg{display:none;background:var(--green-light);color:var(--green);font-size:14px;font-family:var(--mono);padding:12px 20px;border-radius:8px;border:1px solid rgba(26,122,74,.2);margin-top:1rem}
-
 @media(max-width:600px){
-  .hero-form{flex-direction:column;align-items:center}
-  .hero-form input{width:100%;max-width:320px}
+  .form-row,.cta-form-row{flex-direction:column;align-items:center}
+  .form-wrap input,.cta-form-wrap input{width:100%;max-width:320px}
   .btn-primary,.btn-white{width:100%;max-width:320px}
 }
 </style>
@@ -156,27 +158,19 @@ footer{text-align:center;padding:2rem;font-size:12px;color:#aaa;font-family:var(
 <section class="hero">
   <div class="hero-eyebrow">Beta — tylko 50 miejsc</div>
   <h1>Raporty sprzedażowe<br>dla Twojego sklepu,<br><em>bez Twojego udziału</em></h1>
-  <p class="hero-sub">Każdego tygodnia automatycznie dostajesz raport PDF z wynikami WooCommerce. Przychód, zamówienia, top produkty — bez Excela, bez ręcznej pracy.</p>
-  <div class="hero-form">
-    <input type="email" id="email1" placeholder="twoj@sklep.pl">
-    <button class="btn-primary" onclick="zapisz('email1','success1')">Chcę darmowy raport próbny →</button>
-  </div>
-  <p class="hero-note">Bez karty kredytowej · Raport próbny w 48h · Anuluj kiedy chcesz</p>
-  <div class="success-msg" id="success1">✓ Gotowe! Odezwiemy się w ciągu 48 godzin.</div>
-</section>
+  <p class="hero-sub">Każdego tygodnia automatycznie dostajesz raport z wynikami WooCommerce. Przychód, zamówienia, top produkty — bez Excela, bez ręcznej pracy.</p>
 
-<div class="ticker">
-  <div class="ticker-track">
-    <span class="ticker-item">📦 <strong>Sklep Kowalski</strong> — zaoszczędził 4h tygodniowo</span>
-    <span class="ticker-item">📊 <strong>ModaOnline.pl</strong> — odkrył top produkt, który generuje 38% przychodów</span>
-    <span class="ticker-item">⚡ <strong>TechGadgets</strong> — raport wysłany automatycznie o 7:00 w poniedziałek</span>
-    <span class="ticker-item">🇵🇱 <strong>PolskieSklepy</strong> — 23 aktywnych użytkowników w Polsce</span>
-    <span class="ticker-item">📦 <strong>Sklep Kowalski</strong> — zaoszczędził 4h tygodniowo</span>
-    <span class="ticker-item">📊 <strong>ModaOnline.pl</strong> — odkrył top produkt, który generuje 38% przychodów</span>
-    <span class="ticker-item">⚡ <strong>TechGadgets</strong> — raport wysłany automatycznie o 7:00 w poniedziałek</span>
-    <span class="ticker-item">🇵🇱 <strong>PolskieSklepy</strong> — 23 aktywnych użytkowników w Polsce</span>
+  <div class="form-wrap">
+    <div class="form-row">
+      <input type="email" id="email1" placeholder="twoj@sklep.pl">
+      <button class="btn-primary" onclick="zapisz('email1','success1','err1')">Chcę darmowy raport próbny →</button>
+    </div>
+    <div class="form-error" id="err1"></div>
+    <div class="success-msg" id="success1">✓ Gotowe! Odezwiemy się w ciągu 48 godzin.</div>
   </div>
-</div>
+
+  <p class="hero-note">Bez karty kredytowej · Raport próbny w 48h · Anuluj kiedy chcesz</p>
+</section>
 
 <section class="section">
   <div class="section-tag">Problem</div>
@@ -210,7 +204,7 @@ footer{text-align:center;padding:2rem;font-size:12px;color:#aaa;font-family:var(
       <div class="step">
         <div class="step-num">02 / Ustaw</div>
         <h3>Wybierz częstotliwość i format</h3>
-        <p>Cotygodniowy, miesięczny, lub obydwa. PDF na e-mail albo link do podglądu online. Bez dodatkowych rozmów.</p>
+        <p>Cotygodniowy, miesięczny, lub obydwa. Raport na e-mail albo link do podglądu online. Bez dodatkowych rozmów.</p>
       </div>
       <div class="step">
         <div class="step-num">03 / Zapomnij</div>
@@ -280,15 +274,15 @@ footer{text-align:center;padding:2rem;font-size:12px;color:#aaa;font-family:var(
     <div class="price-amount"><sup>zł</sup>149</div>
     <div class="price-period">miesięcznie · anuluj kiedy chcesz</div>
     <ul class="price-features">
-      <li>Cotygodniowy raport PDF na e-mail</li>
+      <li>Cotygodniowy raport na e-mail</li>
       <li>Miesięczne podsumowanie z trendami</li>
       <li>Top 10 produktów z dynamiką sprzedaży</li>
       <li>Porównanie tydzień/miesiąc/rok do roku</li>
-      <li>Integracja WooCommerce i Shopify</li>
+      <li>Integracja z WooCommerce</li>
       <li>Onboarding w 3 minuty — bez rozmów</li>
       <li>Wsparcie przez e-mail w 24h</li>
     </ul>
-    <a href="#" class="price-cta" onclick="event.preventDefault();alert('Wkrótce! Zostaw e-mail poniżej.')">Zacznij 14-dniowy darmowy okres →</a>
+    <a href="https://tally.so/r/Gx5odj" class="price-cta">Zacznij 14-dniowy darmowy okres →</a>
   </div>
 </section>
 
@@ -304,10 +298,6 @@ footer{text-align:center;padding:2rem;font-size:12px;color:#aaa;font-family:var(
     <div class="faq-a">Zwykle 3–5 minut. Wpisujesz adres sklepu, generujesz klucz API w WooCommerce (mamy instrukcję krok po kroku), wklejasz go w formularzu. Gotowe — pierwszy raport dostaniesz w ciągu 24h.</div>
   </div>
   <div class="faq-item" onclick="toggleFaq(this)">
-    <div class="faq-q">Czy działacie z Shopify?</div>
-    <div class="faq-a">Tak, obsługujemy WooCommerce, Shopify oraz PrestaShop. Jeśli korzystasz z innej platformy — napisz do nas, jesteśmy w trakcie dodawania kolejnych integracji.</div>
-  </div>
-  <div class="faq-item" onclick="toggleFaq(this)">
     <div class="faq-q">Co jeśli będę chciał zrezygnować?</div>
     <div class="faq-a">Anulujesz subskrypcję jednym kliknięciem w panelu klienta. Bez rozmów, bez formularzy, bez okresu wypowiedzenia. Dostęp kończy się z datą ostatniej opłaty.</div>
   </div>
@@ -315,16 +305,23 @@ footer{text-align:center;padding:2rem;font-size:12px;color:#aaa;font-family:var(
     <div class="faq-q">Czy moje dane sprzedażowe są bezpieczne?</div>
     <div class="faq-a">Tak. Dane przesyłamy szyfrowanym połączeniem HTTPS, nie przechowujemy danych zamówień ani danych klientów Twojego sklepu — tylko zagregowane statystyki potrzebne do raportu.</div>
   </div>
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-q">Z jakimi platformami działa RaportKit?</div>
+    <div class="faq-a">Obecnie obsługujemy WooCommerce. Jeśli korzystasz z innej platformy — napisz do nas, jesteśmy w trakcie dodawania kolejnych integracji.</div>
+  </div>
 </section>
 
 <section class="cta-bottom">
   <h2>Pierwszy raport<br>w ciągu 48 godzin.</h2>
   <p>Dołącz teraz — beta z 14 dniami za darmo.</p>
-  <div class="cta-form">
-    <input type="email" id="email2" placeholder="twoj@sklep.pl">
-    <button class="btn-white" onclick="zapisz('email2','success2')">Chcę zacząć →</button>
+  <div class="cta-form-wrap">
+    <div class="cta-form-row">
+      <input type="email" id="email2" placeholder="twoj@sklep.pl">
+      <button class="btn-white" onclick="zapisz('email2','success2','err2')">Chcę zacząć →</button>
+    </div>
+    <div class="cta-form-error" id="err2"></div>
+    <div class="success-msg" id="success2" style="margin-top:1rem">✓ Gotowe! Odezwiemy się w ciągu 48 godzin.</div>
   </div>
-  <div class="success-msg" id="success2" style="margin:1rem auto;max-width:400px;display:none">✓ Gotowe! Odezwiemy się w ciągu 48 godzin.</div>
 </section>
 
 <footer>
@@ -332,28 +329,44 @@ footer{text-align:center;padding:2rem;font-size:12px;color:#aaa;font-family:var(
 </footer>
 
 <script>
-function zapisz(inputId, msgId) {
+function zapisz(inputId, msgId, errId) {
   const input = document.getElementById(inputId);
   const val = input.value.trim();
-  const errorId = inputId + '-error';
-  let error = document.getElementById(errorId);
-  if (!error) {
-    error = document.createElement('p');
-    error.id = errorId;
-    error.style.cssText = 'color:#c0392b;font-size:12px;margin-top:6px;font-family:var(--mono)';
-    input.parentNode.insertBefore(error, input.nextSibling);
-  }
-  if (!val || !val.includes('@')) {
-    error.textContent = '✗ Wpisz poprawny adres e-mail.';
-    input.style.borderColor = '#c0392b';
+  const err = document.getElementById(errId);
+
+  if (!val || !val.includes('@') || !val.includes('.')) {
+    err.textContent = '✗ Wpisz poprawny adres e-mail.';
+    input.classList.add('input-error');
     return;
   }
-  error.textContent = '';
-  input.style.borderColor = '';
-  document.getElementById(msgId).style.display = 'block';
+
+  err.textContent = '';
+  input.classList.remove('input-error');
   input.style.display = 'none';
-  window.location.href = 'https://tally.so/r/Gx5odj';
+
+  const btn = input.parentNode.querySelector('button');
+  if (btn) btn.style.display = 'none';
+
+  document.getElementById(msgId).style.display = 'block';
+
+  setTimeout(() => {
+    window.location.href = 'https://tally.so/r/Gx5odj';
+  }, 800);
 }
+
+function toggleFaq(el) {
+  el.classList.toggle('open');
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.style.opacity = '1'; });
+}, { threshold: 0.1 });
+document.querySelectorAll('.problem-card,.step,.stat-box').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transition = 'opacity .5s ease';
+  observer.observe(el);
+});
 </script>
 </body>
+</html>
 </html>

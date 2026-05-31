@@ -333,25 +333,27 @@ footer{text-align:center;padding:2rem;font-size:12px;color:#aaa;font-family:var(
 
 <script>
 function zapisz(inputId, msgId) {
-  const val = document.getElementById(inputId).value.trim();
-  if (!val || !val.includes('@')) { alert('Wpisz poprawny adres e-mail.'); return; }
+  const input = document.getElementById(inputId);
+  const val = input.value.trim();
+  const errorId = inputId + '-error';
+  let error = document.getElementById(errorId);
+  if (!error) {
+    error = document.createElement('p');
+    error.id = errorId;
+    error.style.cssText = 'color:#c0392b;font-size:12px;margin-top:6px;font-family:var(--mono)';
+    input.parentNode.insertBefore(error, input.nextSibling);
+  }
+  if (!val || !val.includes('@')) {
+    error.textContent = '✗ Wpisz poprawny adres e-mail.';
+    input.style.borderColor = '#c0392b';
+    return;
+  }
+  error.textContent = '';
+  input.style.borderColor = '';
   document.getElementById(msgId).style.display = 'block';
-  document.getElementById(inputId).style.display = 'none';
-  // Tu podłącz swoje API / Tally / Mailchimp
-  window.location.href = 'https://tally.so/r/Gx5odj';
+  input.style.display = 'none';
+  window.location.href = 'https://tally.so/r/TWOJ_ID';
 }
-function toggleFaq(el) {
-  el.classList.toggle('open');
-}
-// Animate on scroll
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if(e.isIntersecting) e.target.style.opacity = '1'; });
-}, { threshold: 0.1 });
-document.querySelectorAll('.problem-card,.step,.stat-box').forEach(el => {
-  el.style.opacity = '0';
-  el.style.transition = 'opacity .5s ease';
-  observer.observe(el);
-});
 </script>
 </body>
 </html>
